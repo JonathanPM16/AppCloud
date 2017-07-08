@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Inventarios TAMBO+</title>
+</head>
+<body>
+<h1 align="center">Editar Empresa</h1><br/>
+<form th:object="${empresa}" th:action="@{/empresa/new}" method="post">
+<input type="hidden" th:field="*{idempresa}" />
+Nombre: <input type="text" th:field="*{nombre}" /><br/>
+<br/><button type="submit">Guardar</button>
+</form>
+</body>
+</html>

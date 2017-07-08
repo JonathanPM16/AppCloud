@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="es">
+<title>Registro de Empleado</title>
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body background="images/fondo.png">
+<div class="container">
+<!--/*/ <th:block th:include="fragments/header2 :: header"></th:block> /*/-->
+<div class="panel panel-info">
+ <div class="panel-body">
+<p style="color:red" align="center" th:text="${message}"></p>
+<form th:object="${empleado}" th:action="@{/empleado/new}" method="post">
+ <div class="form-group">
+  <label for="nombre" >Nombre: </label>
+  <input type="text" class="form-control"  th:field="*{nombre}" />
+  <span style="color:red" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+ </div>
+<div class="form-group">
+ <label for="apellido" >Apellido: </label>
+ <input type="text" class="form-control" id="apellido" th:field="*{apellido}" />
+ <span style="color:red" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></span>
+</div>
+<div class="form-group">
+ <label for="apellido" >Usuario: </label>
+ <input type="text" class="form-control" id="usuario" th:field="*{usuario}" />
+ <span style="color:red" th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}"></span>
+</div>
+<div class="form-group">
+ <label for="dni" >Password: </label>
+ <input id="dni" class="form-control"  type="text" th:field="*{password}"/>
+ <span style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">DNI no valido</span>
+</div>
+ <div align="center">
+<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Guardar</button>
+</div>
+</form>
+</div>
+
+</div>
+</div>
+</body>
+</html>

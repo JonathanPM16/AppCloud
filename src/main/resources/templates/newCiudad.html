@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Inventarios TAMBO+</title>
+</head>
+<body>
+<h1 align="center">Ciudades</h1>
+<h2>Registro de Ciudad</h2>
+<p style="color:red" align="center" th:text="${message}"></p>
+<form  th:object="${ciudad}" th:action="@{/ciudad/new}" method="post">
+	Nombre: <input type="text" th:field="*{nombre}" /><br/>
+	<br/><button type="submit">Registrar</button>
+</form>
+<h2>Lista Ciudades</h2>
+	<table border="1">
+  <thead>
+   	<tr>
+        <th data-field="idciudad">ID</th>
+   		<th data-field="nombre">Nombre</th>
+   	</tr>
+  </thead>
+  <tbody>
+  	<tr th:each="c:${ciudades}">
+	    <td th:text="${c.idciudad}"></td>
+	    <td th:text="${c.nombre}"></td>
+	    <td><a th:href="${'/editarCiudad' + c.idciudad}">Update</a></td>
+	    <td><a th:href="${'/deleteciudad'+ c.idciudad}">Delete</a></td>  
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

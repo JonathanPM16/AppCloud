@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Inventarios TAMBO+</title>
+</head>
+<body>
+<h1 align="center">Empresas</h1>
+<h2>Registro de Empresa</h2>
+<p style="color:red" align="center" th:text="${message}"></p>
+<form  th:object="${empresa}" th:action="@{/empresa/new}" method="post">
+	Nombre: <input type="text" th:field="*{nombre}" /><br/>
+	<br/><button type="submit">Registrar</button>
+</form>
+<h2>Lista Empresas</h2>
+	<table border="1">
+  <thead>
+   	<tr>
+        <th data-field="idempresa">ID</th>
+   		<th data-field="nombre">Nombre</th>
+   	</tr>
+  </thead>
+  <tbody>
+  	<tr th:each="e:${empresas}">
+	    <td th:text="${e.idempresa}"></td>
+	    <td th:text="${e.nombre}"></td>
+	    <td><a th:href="${'/editarEmpresa' + e.idempresa}">Update</a></td>
+	    <td><a th:href="${'/deleteempresa'+ e.idempresa}">Delete</a></td>  
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

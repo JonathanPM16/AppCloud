@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Inventarios TAMBO+</title>
+</head>
+<body>
+<h1 align="center">Almacenes</h1>
+<h2>Registro de Almacen</h2>
+<p style="color:red" align="center" th:text="${message}"></p>
+<form  th:object="${almacen}" th:action="@{/almacen/new}" method="post">
+	Direccion: <input type="text" th:field="*{direccion}" /><br/><br/>
+	Tipo de Almacen: <select th:field="*{tipoalmacen}">
+    	<option value="Planta General">Planta General</option>
+     	<option value="Sucursal">Sucursal</option>
+    </select><br/><br/>
+    Ciudad:
+     <table border="1">
+      <thead>
+      <tr>
+          <th data-field="idciudad">ID</th>
+          <th data-field="nombre">Nombre</th>
+      </tr>
+      </thead>
+      <tbody>
+       <tr th:each="c:${ciudades}">
+          <td th:text="${c.idciudad}"></td>
+          <td th:text="${c.nombre}"></td>
+          <td><input type="radio" th:field="*{ciudad.idciudad}"  name="ciudad" th:value="${c.idciudad}"></input></td>
+       </tr>
+      </tbody>
+    </table>   
+    <br/>
+	<br/><button type="submit">Registrar</button>
+</form>
+<h2>Lista Almacenes</h2>
+	<table border="1">
+  <thead>
+   	<tr>
+        <th data-field="idalmacen">ID</th>
+   		<th data-field="direccion">Direccion</th>
+   		<th data-field="ciudad">Ciudad</th>
+   		<th data-field="tipoalmacen">TipoAlmacen</th>
+   	</tr>
+  </thead>
+  <tbody>
+  	<tr th:each="a:${almacenes}">
+	    <td th:text="${a.idalmacen}"></td>
+	    <td th:text="${a.direccion}"></td>
+	    <td th:text="${a.ciudad.nombre}"></td>
+	    <td th:text="${a.tipoalmacen}"></td>
+	    <td><a th:href="${'/editarAlmacen' + a.idalmacen}">Update</a></td>
+	    <td><a th:href="${'/deletealmacen'+ a.idalmacen}">Delete</a></td>  
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

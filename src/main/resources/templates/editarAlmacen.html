@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Inventarios TAMBO+</title>
+</head>
+<body>
+<h1 align="center">Editar Ciudad</h1><br/>
+<form  th:object="${almacen}" th:action="@{/almacen/new}" method="post">
+<input type="hidden" th:field="*{idalmacen}" />
+	Direccion: <input type="text" th:field="*{direccion}" /><br/><br/>
+	Tipo de Almacen: <select th:field="*{tipoalmacen}">
+    	<option value="Planta General">Planta General</option>
+     	<option value="Sucursal">Sucursal</option>
+    </select><br/><br/>
+    Ciudad:
+     <table border="1">
+      <thead>
+      <tr>
+          <th data-field="idciudad">ID</th>
+          <th data-field="nombre">Nombre</th>
+      </tr>
+      </thead>
+      <tbody>
+       <tr th:each="c:${ciudades}">
+          <td th:text="${c.idciudad}"></td>
+          <td th:text="${c.nombre}"></td>
+          <td><input type="radio" th:field="*{ciudad.idciudad}"  name="ciudad" th:value="${c.idciudad}"></input></td>
+       </tr>
+      </tbody>
+    </table>   
+    <br/>
+	<br/><button type="submit">Guardar</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Inventarios TAMBO+</title>
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body background="images/fondo.png">
+
+<div class="container">
+<!--/*/ <th:block th:include="fragments/header2 :: header"></th:block> /*/-->
+<div align="center">
+  <img src="../static/images/logo.png" th:src="@{/images/logo.png}"/>
+</div>
+<div class="col-md-4"></div>
+<div class="col-md-4">
+<div class="panel panel-info">
+ <div class="panel-body">
+<h1 align="center">Ingresar como:</h1>
+<form th:action="@{/empleado}" method="post">
+<button type="submit" class="btn btn-success">Empleado</button><br/><br/>
+</form>
+<form th:action="@{/proveedor}" method="post">
+<button type="submit" class="btn btn-success">Proveedor</button>
+</form>
+</div>
+</div>
+<div class="col-md-4"></div>
+</div>
+</div>
+</body>
+</html>

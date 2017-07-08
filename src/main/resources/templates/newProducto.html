@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Inventarios TAMBO+</title>
+</head>
+<body>
+<h1 align="center">Productos</h1>
+<h2>Registro de Producto</h2>
+<p style="color:red" align="center" th:text="${message}"></p>
+<form  th:object="${producto}" th:action="@{/producto/new}" method="post">
+	Nombre: <input type="text" th:field="*{nombre}" /><br/><br/>
+	Medida: <input type="text" th:field="*{medida}" /><br/><br/>
+	Precio (S/.): <input type="number" th:field="*{precio}" step=".01"/><br/><br/>
+    Tipo de Producto:
+     <table border="1">
+      <thead>
+      <tr>
+        <th data-field="idproducto">ID</th>
+   		<th data-field="nombre">Nombre</th>
+      </tr>
+      </thead>
+      <tbody>
+       <tr th:each="tp:${tipoproductos}">
+          <td th:text="${tp.idtipoproducto}"></td>
+          <td th:text="${tp.nombre}"></td>
+          <td><input type="radio" th:field="*{tipoproducto.idtipoproducto}"  name="tipoproducto" th:value="${tp.idtipoproducto}"></input></td>
+       </tr>
+      </tbody>
+    </table>   
+    <br/>
+	<br/><button type="submit">Registrar</button>
+</form>
+<h2>Lista Productos</h2>
+	<table border="1">
+  <thead>
+   	<tr>
+        <th data-field="idproducto">ID</th>
+   		<th data-field="nombre">Nombre</th>
+   		<th data-field="tipoproducto">TipoProducto</th>
+   		<th data-field="precio">Precio</th>
+   	</tr>
+  </thead>
+  <tbody>
+  	<tr th:each="p:${productos}">
+	    <td th:text="${p.idproducto}"></td>
+	    <td th:text="${p.nombre}"></td>
+	    <td th:text="${p.tipoproducto.nombre}"></td>
+	    <td th:text="${p.precio}"></td>
+	    <td><a th:href="${'/editarProducto' + p.idproducto}">Update</a></td>
+	    <td><a th:href="${'/deleteproducto'+ p.idproducto}">Delete</a></td>  
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

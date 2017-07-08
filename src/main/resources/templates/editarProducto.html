@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Inventarios TAMBO+</title>
+</head>
+<body>
+<h1 align="center">Editar Ciudad</h1><br/>
+<form  th:object="${producto}" th:action="@{/producto/new}" method="post">
+<input type="hidden" th:field="*{idproducto}" />
+	Nombre: <input type="text" th:field="*{nombre}" /><br/><br/>
+	Medida: <input type="text" th:field="*{medida}" /><br/><br/>
+	Precio (S/.): <input type="number" th:field="*{precio}" step=".01"/><br/><br/>
+    Tipo de Producto:
+     <table border="1">
+      <thead>
+      <tr>
+        <th data-field="idproducto">ID</th>
+   		<th data-field="nombre">Nombre</th>
+      </tr>
+      </thead>
+      <tbody>
+       <tr th:each="tp:${tipoproductos}">
+          <td th:text="${tp.idtipoproducto}"></td>
+          <td th:text="${tp.nombre}"></td>
+          <td><input type="radio" th:field="*{tipoproducto.idtipoproducto}"  name="tipoproducto" th:value="${tp.idtipoproducto}"></input></td>
+       </tr>
+      </tbody>
+    </table>   
+    <br/>
+	<br/><button type="submit">Registrar</button>
+</form>
+</body>
+</html>

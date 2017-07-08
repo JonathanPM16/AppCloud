@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Inventarios TAMBO+</title>
+</head>
+<body>
+<h1 align="center">Iniciar sesion como Empleado:</h1><br/>
+<p style="color:red" align="center" th:text="${message}"></p>
+<form th:action="@{/empleado/login}" method="post">
+Usuario: <input type="text" id="usuario" name="usuario"/><br/><br/>
+Password <input type="password" id="password" name="password"/><br/><br/>
+<button type="submit">Iniciar Sesion</button>
+</form>
+</body>
+</html>
